@@ -19,6 +19,14 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('news/create','Admin\NewsController@add');
     /* 入力データでニュースを新規作成する */
     Route::post('news/create','Admin\NewsController@create');
+    // 入力データでニュース一覧画面を取得する
+    Route::get('news','Admin\NewsController@index');
+    // ニュースの編集画面を表示する
+    Route::get('news/edit','Admin\NewsController@edit');
+    // 入力データでニュースを上書き保存する
+    Route::post('news/edit','Admin\NewsController@update');
+     // 選択データを削除してニュース一覧画面を表示
+    Route::get('news/delete','Admin\NewsController@delete');
     /* プロフィールの新規作成画面表示 */
     Route::get('profile/create','Admin\ProfileController@add');
     /* 入力データでプロフィールを新規作成 */

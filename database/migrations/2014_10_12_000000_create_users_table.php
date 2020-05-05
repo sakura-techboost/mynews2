@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
      /* php artisan migrateを実行したときに呼ばれる関数 */
     public function up()
     {
-        /* usewという名前のテーブル(箱)を作成する。中身は以下の通り */
+        /* usersという名前のテーブル(箱)を作成する。中身は以下の通り */
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
@@ -38,3 +38,4 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
     }
 }
+
