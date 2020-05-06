@@ -31,10 +31,14 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
     Route::get('profile/create','Admin\ProfileController@add');
     /* 入力データでプロフィールを新規作成 */
     Route::post('profile/create','Admin\ProfileController@create');
+    // 入力データでプロフィール一覧画面を取得する
+    Route::get('profile','Admin\ProfileController@index');
     /* プロフィール編集画面を表示 */
     Route::get('profile/edit','Admin\ProfileController@edit');
     /* 入力データでプロフィールを更新する */
     Route::post('profile/edit','Admin\ProfileController@update');
+    // 選択データを削除してニュース一覧画面を表示
+    Route::get('profile/delete','Admin\ProfileController@delete');
 });
 
 /*「http://XXXXXX.jp/XXX というアクセスが来たときに、 

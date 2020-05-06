@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 // Newsモデルを扱えるようにする
 use App\News;
-
+use App\History;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -70,6 +71,8 @@ class NewsController extends Controller
         // ニュース新規投稿画面にリダイレクトする
         return redirect('admin/news/create');
     }
+    
+    
     /* ※cond_title→index.blade.php内で入力された検索ワードデータの名前
     whereメソッド→テーブル内の条件に一致したレコードを配列の形で取得することができる
    
@@ -130,7 +133,14 @@ class NewsController extends Controller
         
         // 該当するデータを上書きして保存する
         $news->fill($news_form)->save();
-        return redirect('admin/news');
+        
+        //HistoryModelにも編集履歴を追加する
+        $history=new History;
+        $history->news_id=$news->id;
+        $history->edited_at=Carbon::now();
+        $history->save();
+        
+        return redirect('admin/news/');
     }
     
     // データを削除する
