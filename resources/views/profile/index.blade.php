@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr color="ff69b4s">
+                    <hr color="ff69b4">
                 @endforeach
             </div>
         </div>
